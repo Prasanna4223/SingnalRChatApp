@@ -1,0 +1,496 @@
+﻿@{
+    ViewData["Title"] = "SignalR Chat Application";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <!-- Link to Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, sans-serif;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .chat-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chat-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        #message {
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #sendmessage {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            #sendmessage:hover {
+                background-color: #0056b3;
+            }
+
+        #discussion {
+            list-style-type: none;
+            padding: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+            #discussion li {
+                padding: 8px 10px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                background-color: #f1f1f1;
+                word-wrap: break-word;
+            }
+
+                #discussion li:nth-child(odd) {
+                    background-color: #e0e0e0;
+                }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .chat-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .video-wrapper {
+            display: none; /* Hide initially */
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        video {
+            border-radius: 15px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            width: 360px;
+            height: 240px;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 150vh;
+            min-width:100vh;
+        /*     display: flex;
+            align-items: center;
+            justify-content: center;
+                    color: white;*/
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            padding: 4px;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            background: #00c6ff;
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+            button:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 10px #00c6ff;
+            }
+    </style>
+    <style>
+        #incomingCallPopup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 280px;
+            background: #ffffff;
+            color: #000;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            z-index: 9999;
+            display: none;
+            text-align: center;
+            animation: slideUp 0.3s ease-out;
+            animation-fill-mode: both;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+
+        @@keyframes slideUp {
+            0% {
+                transform: translate(-50%, 100%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        #incomingCallPopup .btn-group {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #incomingCallPopup button {
+            width: 100px;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #incomingCallPopup .accept {
+            background-color: #28a745;
+        }
+
+        #incomingCallPopup .reject {
+            background-color: #dc3545;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>SignalR Chat Application</h2>
+            <p>Welcome to the real-time chat application. Please enter your username and start chatting!</p>
+        </div>
+
+        <div class="input-group">
+            <label for="displayname">User Name:</label>
+            <input type="text" id="displayname" class="form-control" placeholder="Enter your username" />
+        </div>
+
+        <div class="chat-input-group">
+            <input type="text" id="message" class="form-control" placeholder="Type a message" />
+            <input type="button" id="sendmessage" value="Send" class="btn btn-primary" />
+        </div>
+
+        <ul id="discussion"></ul>
+  
+    <h1>🚀 Connect & Call</h1>
+    <hr />
+        <div id="incomingCallPopup">
+            <p><strong>📞 Incoming Call...</strong></p>
+            <div class="btn-group">
+                <button class="accept" onclick="acceptCall()">Accept</button>
+                <button class="reject" onclick="rejectCall()">Reject</button>
+            </div>
+        </div>
+
+    <div class="video-wrapper">
+        <h3>Your window: </h3>
+        <video id="localVideo" autoplay muted playsinline></video>
+        <br />
+        <h3>Client window: </h3>
+        <video id="remoteVideo" autoplay playsinline></video>
+    </div>
+    <div class="controls">
+        <p><strong>Your Peer ID:</strong> <span id="myConnectionId">Loading...</span></p>
+        <br />
+        <input type="text" id="targetId" placeholder="Enter Peer ID" />
+        <button onclick="startCall(document.getElementById('targetId').value)">📞 Call Now</button>
+        </div>
+    </div>
+
+  @*   <div class="chat-footer">
+        <p>&copy; 2025 SignalR Chat Application</p>
+    </div> *@
+
+    <!-- Bootstrap JS for responsive features -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ChatHub connection
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chat")
+            .build();
+
+        // CallHub connection
+        const connection1 = new signalR.HubConnectionBuilder()
+            .withUrl("/callHub")
+            .build();
+
+        let localStream;
+        let peerConnection;
+        let incomingOffer, incomingCallerId;
+        let isOnCall = false;  // Flag to track if the user is currently on a call
+
+        const config = {
+            iceServers: [
+                {
+                    urls: "turn:relay1.expressturn.com:3478",
+                    username: "admin",
+                    credential: "1234"
+                }
+            ]
+        };
+
+        // ChatHub - Listen for incoming messages
+        connection.on("ReceiveMessage", function (user, message) {
+            console.log("Message received: ", user, message);
+            const encodedMsg = user + ": " + message;
+            const li = document.createElement("li");
+            li.textContent = encodedMsg;
+            document.getElementById("discussion").appendChild(li);
+            li.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        });
+
+        // Start ChatHub connection
+        connection.start()
+            .then(() => {
+                console.log("ChatHub Connected");
+            })
+            .catch((err) => {
+                console.error("ChatHub connection failed: ", err.toString());
+            });
+
+        // Send message to ChatHub when button is clicked
+        document.getElementById("sendmessage").addEventListener("click", function (event) {
+            const user = document.getElementById("displayname").value;
+            const message = document.getElementById("message").value;
+
+            if (connection.state === signalR.HubConnectionState.Connected) {
+                connection.invoke("SendMessage", user, message)
+                    .then(() => {
+                        console.log("Message sent to ChatHub");
+                    })
+                    .catch((err) => {
+                        console.error("Send error: ", err.toString());
+                    });
+            } else {
+                console.warn("Cannot send message — connection is not open.");
+            }
+
+            event.preventDefault();
+        });
+
+        // Start CallHub connection
+        connection1.start().then(() => {
+            console.log("CallHub Connected");
+
+            setTimeout(() => {
+                const id = connection1.connectionId;
+                console.log("Connection ID:", id);
+                document.getElementById("myConnectionId").innerText = id ?? 'Unavailable';
+            }, 500);
+        }).catch(err => console.error("CallHub connection failed:", err));
+
+        // Handle incoming media stream
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then(stream => {
+                document.getElementById("localVideo").srcObject = stream;
+                document.getElementById("localVideo").play();
+                document.querySelector('.video-wrapper').style.display = 'flex';
+            })
+            .catch(err => {
+                console.error("Media error: ", err);
+            });
+
+        // Call Handler function (initiate call)
+        async function callHandler() {
+            const targetId = document.getElementById('targetId').value;
+            if (!targetId) {
+                alert("Please enter a valid peer ID.");
+                return;
+            }
+
+            // Check if the user is already in a call
+            if (isOnCall) {
+                alert("You are already in a call. Please finish the current call before making another.");
+                return;
+            }
+
+            await startCall(targetId);
+        }
+
+        // Accept incoming call
+        function acceptCall() {
+            if (isOnCall) {
+                alert("You are already in a call.");
+                callHandler();
+                return;
+            }
+
+            document.getElementById("incomingCallPopup").style.display = "none";
+            document.querySelector('.video-wrapper').style.display = 'flex';
+            startAnswer(incomingCallerId, incomingOffer);
+        }
+
+        // Reject incoming call
+        function rejectCall() {
+            document.getElementById("incomingCallPopup").style.display = "none";
+            connection1.invoke("RejectCall", incomingCallerId);
+        }
+
+        // Start answering the call
+        async function startAnswer(callerId, offer) {
+            isOnCall = true;  // Mark user as on a call
+            localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            document.getElementById("localVideo").srcObject = localStream;
+
+            peerConnection = new RTCPeerConnection(config);
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            peerConnection.onicecandidate = event => {
+                if (event.candidate) {
+                    connection1.invoke("SendIceCandidate", callerId, JSON.stringify(event.candidate));
+                }
+            };
+
+            peerConnection.ontrack = event => {
+                document.getElementById("remoteVideo").srcObject = event.streams[0];
+            };
+
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(offer)));
+            const answer = await peerConnection.createAnswer();
+            await peerConnection.setLocalDescription(answer);
+            connection1.invoke("SendAnswer", callerId, JSON.stringify(answer));
+        }
+
+        // Start a call to another user
+        async function startCall(targetConnectionId) {
+            isOnCall = true;  // Mark user as on a call
+            document.querySelector('.video-wrapper').style.display = 'flex'; // show videos
+            localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            document.getElementById("localVideo").srcObject = localStream;
+            document.getElementById("localVideo").muted = true;
+
+            peerConnection = new RTCPeerConnection(config);
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            peerConnection.onicecandidate = event => {
+                if (event.candidate) {
+                    connection1.invoke("SendIceCandidate", targetConnectionId, JSON.stringify(event.candidate));
+                }
+            };
+
+            peerConnection.ontrack = event => {
+                document.getElementById("remoteVideo").srcObject = event.streams[0];
+            };
+
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+            connection1.invoke("SendOffer", targetConnectionId, JSON.stringify(offer));
+        }
+
+        // Listen for incoming offers (call requests)
+               connection1.on("ReceiveOffer", (callerId, offer) => {
+            if (isOnCall) {
+                // User 2 is already on a call, reject the call and notify the caller (User 3)
+                connection1.invoke("RejectCall", callerId);
+               
+
+                // Send rejection to User 3 (the caller)
+                connection1.invoke("CallRejected", callerId);// Notify User 3 that the call was rejected
+                return;
+            }
+
+            console.log("🔔 ReceiveOffer triggered from: ", callerId);
+            console.log("Offer payload:", offer);
+
+            incomingOffer = offer;
+            incomingCallerId = callerId;
+
+            const popup = document.getElementById("incomingCallPopup");
+            if (popup) {
+                popup.style.display = "block";
+                popup.classList.add("show");
+            } else {
+                console.warn("Popup element not found!");
+            }
+        });
+
+
+        // Listen for received answers to the call
+        connection1.on("ReceiveAnswer", async (responderId, answer) => {
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(answer)));
+        });
+
+        // Listen for received ICE candidates
+        connection1.on("ReceiveIceCandidate", async (userId, candidate) => {
+            if (peerConnection) {
+                await peerConnection.addIceCandidate(new RTCIceCandidate(JSON.parse(candidate)));
+            }
+        });
+
+        // Listen for call rejection
+        connection1.on("CallRejected", (userId) => {
+            alert("Call was rejected by the user.");
+             alert("User is busy. Please try again later.");
+            isOnCall = false;  // Reset call status after rejection
+        });
+
+        // Call ended by either side (user leaves or call is rejected)
+        function endCall() {
+            isOnCall = false;  // Mark the user as no longer on a call
+            document.querySelector('.video-wrapper').style.display = 'none';  // Hide video elements
+            if (peerConnection) {
+                peerConnection.close();
+                peerConnection = null;
+            }
+            localStream.getTracks().forEach(track => track.stop());  // Stop media tracks
+            localStream = null;
+        }
+
+    </script>
+</body>
+</html>
+
