@@ -206,291 +206,34 @@
 
 </head>
 <body>
-
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>SignalR Chat Application</h2>
-            <p>Welcome to the real-time chat application. Please enter your username and start chatting!</p>
+    <div style="display: flex; height: 100vh;">
+        <!-- Sidebar -->
+        <div style="width: 250px; background: #2c3e50; color: white; padding: 20px;">
+            <h3>👥 Active Users</h3>
+            <p style="font-size: 12px; color: #bdc3c7;">Click a user to call</p>
+            <ul id="activeUsersList" style="list-style: none; padding: 0;"></ul>
         </div>
 
-        <div class="input-group">
-            <label for="displayname">User Name:</label>
-            <input type="text" id="displayname" class="form-control" placeholder="Enter your username" />
-        </div>
+        <!-- Main content -->
+        <div style="flex: 1; padding: 20px;">
+            <h2>📞 Video Call</h2>
 
-        <div class="chat-input-group">
-            <input type="text" id="message" class="form-control" placeholder="Type a message" />
-            <input type="button" id="sendmessage" value="Send" class="btn btn-primary" />
-        </div>
-
-        <ul id="discussion"></ul>
-  
-    <h1>🚀 Connect & Call</h1>
-    <hr />
-        <div id="incomingCallPopup">
-            <p><strong>📞 Incoming Call...</strong></p>
-            <div class="btn-group">
-                <button class="accept" onclick="acceptCall()">Accept</button>
-                <button class="reject" onclick="rejectCall()">Reject</button>
+            <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                <video id="localVideo" autoplay muted playsinline
+                       style="width: 45%; border: 2px solid #1abc9c; border-radius: 10px; background: black;"></video>
+                <video id="remoteVideo" autoplay playsinline
+                       style="width: 45%; border: 2px solid #3498db; border-radius: 10px; background: black;"></video>
             </div>
-        </div>
 
-    <div class="video-wrapper">
-        <h3>Your window: </h3>
-        <video id="localVideo" autoplay muted playsinline></video>
-        <br />
-        <h3>Client window: </h3>
-        <video id="remoteVideo" autoplay playsinline></video>
-    </div>
-    <div class="controls">
-        <p><strong>Your Peer ID:</strong> <span id="myConnectionId">Loading...</span></p>
-        <br />
-        <input type="text" id="targetId" placeholder="Enter Peer ID" />
-        <button onclick="startCall(document.getElementById('targetId').value)">📞 Call Now</button>
+            <button id="endCall" style="padding: 10px 20px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                End Call
+            </button>
         </div>
     </div>
 
-  @*   <div class="chat-footer">
-        <p>&copy; 2025 SignalR Chat Application</p>
-    </div> *@
-
-    <!-- Bootstrap JS for responsive features -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // ChatHub connection
-        const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/chat")
-            .build();
-
-        // CallHub connection
-        const connection1 = new signalR.HubConnectionBuilder()
-            .withUrl("/callHub")
-            .build();
-
-        let localStream;
-        let peerConnection;
-        let incomingOffer, incomingCallerId;
-        let isOnCall = false;  // Flag to track if the user is currently on a call
-
-        const config = {
-            iceServers: [
-                {
-                    urls: "turn:relay1.expressturn.com:3478",
-                    username: "admin",
-                    credential: "1234"
-                }
-            ]
-        };
-
-        // ChatHub - Listen for incoming messages
-        connection.on("ReceiveMessage", function (user, message) {
-            console.log("Message received: ", user, message);
-            const encodedMsg = user + ": " + message;
-            const li = document.createElement("li");
-            li.textContent = encodedMsg;
-            document.getElementById("discussion").appendChild(li);
-            li.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        });
-
-        // Start ChatHub connection
-        connection.start()
-            .then(() => {
-                console.log("ChatHub Connected");
-            })
-            .catch((err) => {
-                console.error("ChatHub connection failed: ", err.toString());
-            });
-
-        // Send message to ChatHub when button is clicked
-        document.getElementById("sendmessage").addEventListener("click", function (event) {
-            const user = document.getElementById("displayname").value;
-            const message = document.getElementById("message").value;
-
-            if (connection.state === signalR.HubConnectionState.Connected) {
-                connection.invoke("SendMessage", user, message)
-                    .then(() => {
-                        console.log("Message sent to ChatHub");
-                    })
-                    .catch((err) => {
-                        console.error("Send error: ", err.toString());
-                    });
-            } else {
-                console.warn("Cannot send message — connection is not open.");
-            }
-
-            event.preventDefault();
-        });
-
-        // Start CallHub connection
-        connection1.start().then(() => {
-            console.log("CallHub Connected");
-
-            setTimeout(() => {
-                const id = connection1.connectionId;
-                console.log("Connection ID:", id);
-                document.getElementById("myConnectionId").innerText = id ?? 'Unavailable';
-            }, 500);
-        }).catch(err => console.error("CallHub connection failed:", err));
-
-        // Handle incoming media stream
-        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-            .then(stream => {
-                document.getElementById("localVideo").srcObject = stream;
-                document.getElementById("localVideo").play();
-                document.querySelector('.video-wrapper').style.display = 'flex';
-            })
-            .catch(err => {
-                console.error("Media error: ", err);
-            });
-
-        // Call Handler function (initiate call)
-        async function callHandler() {
-            const targetId = document.getElementById('targetId').value;
-            if (!targetId) {
-                alert("Please enter a valid peer ID.");
-                return;
-            }
-
-            // Check if the user is already in a call
-            if (isOnCall) {
-                alert("You are already in a call. Please finish the current call before making another.");
-                return;
-            }
-
-            await startCall(targetId);
-        }
-
-        // Accept incoming call
-        function acceptCall() {
-            if (isOnCall) {
-                alert("You are already in a call.");
-                callHandler();
-                return;
-            }
-
-            document.getElementById("incomingCallPopup").style.display = "none";
-            document.querySelector('.video-wrapper').style.display = 'flex';
-            startAnswer(incomingCallerId, incomingOffer);
-        }
-
-        // Reject incoming call
-        function rejectCall() {
-            document.getElementById("incomingCallPopup").style.display = "none";
-            connection1.invoke("RejectCall", incomingCallerId);
-        }
-
-        // Start answering the call
-        async function startAnswer(callerId, offer) {
-            isOnCall = true;  // Mark user as on a call
-            localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            document.getElementById("localVideo").srcObject = localStream;
-
-            peerConnection = new RTCPeerConnection(config);
-            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-
-            peerConnection.onicecandidate = event => {
-                if (event.candidate) {
-                    connection1.invoke("SendIceCandidate", callerId, JSON.stringify(event.candidate));
-                }
-            };
-
-            peerConnection.ontrack = event => {
-                document.getElementById("remoteVideo").srcObject = event.streams[0];
-            };
-
-            await peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(offer)));
-            const answer = await peerConnection.createAnswer();
-            await peerConnection.setLocalDescription(answer);
-            connection1.invoke("SendAnswer", callerId, JSON.stringify(answer));
-        }
-
-        // Start a call to another user
-        async function startCall(targetConnectionId) {
-            isOnCall = true;  // Mark user as on a call
-            document.querySelector('.video-wrapper').style.display = 'flex'; // show videos
-            localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            document.getElementById("localVideo").srcObject = localStream;
-            document.getElementById("localVideo").muted = true;
-
-            peerConnection = new RTCPeerConnection(config);
-            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-
-            peerConnection.onicecandidate = event => {
-                if (event.candidate) {
-                    connection1.invoke("SendIceCandidate", targetConnectionId, JSON.stringify(event.candidate));
-                }
-            };
-
-            peerConnection.ontrack = event => {
-                document.getElementById("remoteVideo").srcObject = event.streams[0];
-            };
-
-            const offer = await peerConnection.createOffer();
-            await peerConnection.setLocalDescription(offer);
-            connection1.invoke("SendOffer", targetConnectionId, JSON.stringify(offer));
-        }
-
-        // Listen for incoming offers (call requests)
-               connection1.on("ReceiveOffer", (callerId, offer) => {
-            if (isOnCall) {
-                // User 2 is already on a call, reject the call and notify the caller (User 3)
-                connection1.invoke("RejectCall", callerId);
-               
-
-                // Send rejection to User 3 (the caller)
-                connection1.invoke("CallRejected", callerId);// Notify User 3 that the call was rejected
-                return;
-            }
-
-            console.log("🔔 ReceiveOffer triggered from: ", callerId);
-            console.log("Offer payload:", offer);
-
-            incomingOffer = offer;
-            incomingCallerId = callerId;
-
-            const popup = document.getElementById("incomingCallPopup");
-            if (popup) {
-                popup.style.display = "block";
-                popup.classList.add("show");
-            } else {
-                console.warn("Popup element not found!");
-            }
-        });
-
-
-        // Listen for received answers to the call
-        connection1.on("ReceiveAnswer", async (responderId, answer) => {
-            await peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(answer)));
-        });
-
-        // Listen for received ICE candidates
-        connection1.on("ReceiveIceCandidate", async (userId, candidate) => {
-            if (peerConnection) {
-                await peerConnection.addIceCandidate(new RTCIceCandidate(JSON.parse(candidate)));
-            }
-        });
-
-        // Listen for call rejection
-        connection1.on("CallRejected", (userId) => {
-            alert("Call was rejected by the user.");
-             alert("User is busy. Please try again later.");
-            isOnCall = false;  // Reset call status after rejection
-        });
-
-        // Call ended by either side (user leaves or call is rejected)
-        function endCall() {
-            isOnCall = false;  // Mark the user as no longer on a call
-            document.querySelector('.video-wrapper').style.display = 'none';  // Hide video elements
-            if (peerConnection) {
-                peerConnection.close();
-                peerConnection = null;
-            }
-            localStream.getTracks().forEach(track => track.stop());  // Stop media tracks
-            localStream = null;
-        }
-
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script src="~/js/call.js"></script>
 </body>
+
 </html>
 

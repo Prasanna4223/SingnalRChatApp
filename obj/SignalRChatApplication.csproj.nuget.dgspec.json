@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\OneDrive - TechSwing Solutions Pvt Ltd\\Desktop\\SignalRChatApplication\\SignalRChatApplication.csproj": {}
+    "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\SignalRChatApplication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\OneDrive - TechSwing Solutions Pvt Ltd\\Desktop\\SignalRChatApplication\\SignalRChatApplication.csproj": {
+    "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\SignalRChatApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\OneDrive - TechSwing Solutions Pvt Ltd\\Desktop\\SignalRChatApplication\\SignalRChatApplication.csproj",
+        "projectUniqueName": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\SignalRChatApplication.csproj",
         "projectName": "SignalRChatApplication",
-        "projectPath": "C:\\Users\\DELL\\OneDrive - TechSwing Solutions Pvt Ltd\\Desktop\\SignalRChatApplication\\SignalRChatApplication.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\OneDrive - TechSwing Solutions Pvt Ltd\\Desktop\\SignalRChatApplication\\obj\\",
+        "projectPath": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\SignalRChatApplication.csproj",
+        "packagesPath": "C:\\Users\\R&D-Prasanna\\.nuget\\packages\\",
+        "outputPath": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\R&D-Prasanna\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -74,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
