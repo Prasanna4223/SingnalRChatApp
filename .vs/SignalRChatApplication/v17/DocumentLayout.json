@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\github_chatapp\\old chat app\\singnalrchatapp_old\\wwwroot\\js\\call.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:wwwroot\\js\\call.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\github_chatapp\\old chat app\\singnalrchatapp_old\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -23,6 +27,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "call.js",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\wwwroot\\js\\call.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\call.js",
+              "ToolTip": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\wwwroot\\js\\call.js",
+              "RelativeToolTip": "wwwroot\\js\\call.js",
+              "ViewState": "AgIAABQBAAAAAAAAAAAcwBcBAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-12-24T05:06:03.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -35,7 +52,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CallHub.cs",
               "DocumentMoniker": "D:\\softwares\\PRASANNA\\Github_chatapp\\Old chat app\\SingnalRChatApp_old\\CallHub.cs",
               "RelativeDocumentMoniker": "CallHub.cs",
@@ -43,8 +60,7 @@
               "RelativeToolTip": "CallHub.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAiwCQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-23T11:50:49.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-23T11:50:49.947Z"
             }
           ]
         }
