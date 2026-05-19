@@ -1,0 +1,221 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\wwwroot\\js\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:wwwroot\\js\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:wwwroot\\css\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\wwwroot\\js\\call.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:wwwroot\\js\\call.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\callhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:callhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:userstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\wwwroot\\js\\chat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:wwwroot\\js\\chat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\render.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:render.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|d:\\softwares\\prasanna\\singnalrchatapp-main\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7ABE024-11EB-4CB6-88F8-F2BA8847E0A0}|SignalRChatApplication.csproj|solutionrelative:views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CallHub.cs",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\CallHub.cs",
+              "RelativeDocumentMoniker": "CallHub.cs",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\CallHub.cs",
+              "RelativeToolTip": "CallHub.cs",
+              "ViewState": "AgIAAIkBAAAAAAAAAAApwJ4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T10:27:21.947Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "style.css",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\css\\style.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\style.css",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\css\\style.css",
+              "RelativeToolTip": "wwwroot\\css\\style.css",
+              "ViewState": "AgIAALABAAAAAAAAAAAcwMgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-12-23T07:16:11.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAC4EAAAAAAAAAAAvwEEEAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-23T07:15:22.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "chat.js",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\js\\chat.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\chat.js",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\js\\chat.js",
+              "RelativeToolTip": "wwwroot\\js\\chat.js",
+              "ViewState": "AgIAABkAAAAAAAAAAAAUwCUAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-17T11:12:57.139Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "call.js",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\js\\call.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\call.js",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\js\\call.js",
+              "RelativeToolTip": "wwwroot\\js\\call.js",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-17T11:12:43.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\ChatHub.cs",
+              "RelativeDocumentMoniker": "ChatHub.cs",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\ChatHub.cs",
+              "RelativeToolTip": "ChatHub.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAowGoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T11:09:13.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "app.js",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\js\\app.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\app.js",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\wwwroot\\js\\app.js",
+              "RelativeToolTip": "wwwroot\\js\\app.js",
+              "ViewState": "AgIAADYBAAAAAAAAAAAwwD0BAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-18T04:29:24.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAABEAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T10:27:10.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Dockerfile",
+              "RelativeDocumentMoniker": "Dockerfile",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Dockerfile",
+              "RelativeToolTip": "Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-18T03:53:51.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserStatus.cs",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\UserStatus.cs",
+              "RelativeDocumentMoniker": "UserStatus.cs",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\UserStatus.cs",
+              "RelativeToolTip": "UserStatus.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAzwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T04:30:58.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "render.yaml",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\render.yaml",
+              "RelativeDocumentMoniker": "render.yaml",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\render.yaml",
+              "RelativeToolTip": "render.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-11-18T03:54:02.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\softwares\\PRASANNA\\SingnalRChatApp-main\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-17T09:50:45.971Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
